@@ -60,6 +60,20 @@ async def list_expense(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text(result)
 
 
+async def remove_expense(update: Update, context: CallbackContext) -> None:
+    user_id = update.message.from_user.id
+    if not user_data.get(user_id):
+        await update.message.reply_text("You dont have any expense to remove")
+        return
+
+    try:
+        remove_idx = int(context.args[0]) - 1
+        expense = user_data[user_id].pop(remove_idx)
+        await update.message.reply_text(f"Expense {expense} removed success")
+    except (ValueError, IndexError):
+        await update.message.reply_text("Your entered invalid index")
+
+
 async def start(update: Update, context: CallbackContext) -> None:
     logging.info("Command start was triggered")
     await update.message.reply_text(
@@ -76,6 +90,7 @@ def run():
     app.add_handler(CommandHandler("help", start))
     app.add_handler(CommandHandler("add", add_expense))
     app.add_handler(CommandHandler("list", list_expense))
+    app.add_handler(CommandHandler("remove", remove_expense))
 
     app.run_polling()
 
