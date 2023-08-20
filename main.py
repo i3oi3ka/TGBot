@@ -263,31 +263,7 @@ async def static(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text(f"{result_reply}\nSum Expense = {sum_expense}")
         else:
             await update.message.reply_text(f"You don't have any expense of period {days} days")
-
-    if not user_income.get(user_id):
-        await update.message.reply_text("You dont have any income")
-        return
-    try:
-        days = int(context.args[0])
-    except (ValueError, IndexError):
-        await update.message.reply_text("You entered incorrect num days")
-        return
-
-    now = datetime.now()
-    sum_income = 0
-    income_period = []
-    for income in user_income[user_id]:
-        income_list = income.split()
-        if datetime.strptime(" ".join(income_list[2:]), '%Y-%m-%d %H:%M') >= (now - timedelta(days=days)):
-            income_period.append(income)
-            sum_income += int(income_list[1])
-
-    if income_period:
-        income_info = '\n'.join(map(str, income_period))
-        await update.message.reply_text(
-            f"You income of {days} days:\n{income_info}\nSum of the period: {sum_income}")
-    else:
-        await update.message.reply_text(f"You don't have any income of period {days} days")
+    await list_income_in_period(update, context)
 
 
 async def start(update: Update, context: CallbackContext) -> None:
