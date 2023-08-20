@@ -252,8 +252,6 @@ async def static(update: Update, context: CallbackContext) -> None:
         if expense_period:
             result_reply = ''
             for category in category_expense:
-                print(category)
-                print(expense_period)
                 if category in str(expense_period):
                     sum_expense_in_category = 0
                     result_reply += f'\nExpense in category {category}:\n'
