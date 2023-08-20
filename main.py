@@ -325,7 +325,7 @@ def run():
     app.add_handler(CommandHandler("add_income", add_income))
     app.add_handler(CommandHandler("remove_income", remove_income))
     app.add_handler(CommandHandler("list_income", list_income))
-    app.add_handler(CommandHandler("income_in_period", list_income_in_period()))
+    app.add_handler(CommandHandler("income_in_period", list_income_in_period))
     app.add_handler(CommandHandler("static", static))
 
     app.run_polling()
