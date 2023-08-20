@@ -68,9 +68,7 @@ async def add_expense(update: Update, context: CallbackContext) -> None:
         return
 
     try:
-        print(date_expense)
         date = datetime.strptime(date_expense.strip(), '%Y-%m-%d %H:%M')
-        print(date)
     except ValueError:
         logging.error("Invalid date format")
         await update.message.reply_text("Your date argument is invalid, please use %Y-%m-%d %H:%M format")
