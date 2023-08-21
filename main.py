@@ -275,11 +275,11 @@ async def start(update: Update, context: CallbackContext) -> None:
         "cost (integer) date (Y-M-D h:m) \n"
         "List expense: /list_expense \n"
         "Remove expense: /remove_expense № \n"
-        "Expense of period: /expense_in_period days \n"
+        "Expense in period: /expense_in_period days \n"
         "Add income: /add_income \n"
         "List income: /list_income \n"
         "Remove income: /remove_income № \n"
-        "Income of period: /income_in_period days \n"
+        "Income in period: /income_in_period days \n"
         "Static in period: /static days \n"
 
     )
