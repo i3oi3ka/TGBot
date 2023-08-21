@@ -168,7 +168,7 @@ async def add_income(update: Update, context: CallbackContext) -> None:
     user_income[user_id].append(str(income))
     with open('user_income.json', 'w') as f:
         f.write(json.dumps(user_income))
-    await update.message.reply_text(f"Your expense: {income} add success")
+    await update.message.reply_text(f"Your income: {income} add success")
 
 
 async def remove_income(update: Update, context: CallbackContext) -> None:
@@ -275,11 +275,11 @@ async def start(update: Update, context: CallbackContext) -> None:
         "cost (integer) date (Y-M-D h:m) \n"
         "List expense: /list_expense \n"
         "Remove expense: /remove_expense № \n"
-        "Expense of period: /expense_of_period days \n"
+        "Expense of period: /expense_in_period days \n"
         "Add income: /add_income \n"
         "List income: /list_income \n"
         "Remove income: /remove_income № \n"
-        "Income of period: /income_of_period days \n"
+        "Income of period: /income_in_period days \n"
         "Static in period: /static days \n"
 
     )
